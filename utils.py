@@ -13,7 +13,7 @@ import tqdm
 from openai import openai_object
 import copy
 
-StrOrOpenAIObject = Union[str, openai_object.OpenAIObject]
+StrOrOpenAIObject = Union
 
 openai_org = os.getenv("OPENAI_ORG")
 if openai_org is not None:
@@ -28,16 +28,16 @@ class OpenAIDecodingArguments(object):
     top_p: float = 1.0
     n: int = 1
     stream: bool = False
-    stop: Optional[Sequence[str]] = None
+    stop: Optional = None
     presence_penalty: float = 0.0
     frequency_penalty: float = 0.0
-    suffix: Optional[str] = None
-    logprobs: Optional[int] = None
+    suffix: Optional = None
+    logprobs: Optional = None
     echo: bool = False
 
 
 def openai_completion(
-    prompts: Union[str, Sequence[str], Sequence[dict[str, str]], dict[str, str]],
+    prompts: Union,
     decoding_args: OpenAIDecodingArguments,
     model_name="text-davinci-003",
     sleep_time=2,
@@ -46,7 +46,7 @@ def openai_completion(
     max_batches=sys.maxsize,
     return_text=False,
     **decoding_kwargs,
-) -> Union[Union[StrOrOpenAIObject], Sequence[StrOrOpenAIObject], Sequence[Sequence[StrOrOpenAIObject]],]:
+) -> Union:
     """Decode with OpenAI API.
 
     Args:
